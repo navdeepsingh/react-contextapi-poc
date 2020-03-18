@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
+import Header from './components/Header'
+import ArticleForm from './components/ArticleForm'
+import ArticlesList from './components/ArticlesList'
+import ArticleProvider from "./context"
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <ArticleProvider>
+        <ArticleForm />
+        <ArticlesList />
+      </ArticleProvider>
     </div>
   );
 }
