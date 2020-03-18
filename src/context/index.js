@@ -8,13 +8,11 @@ const ArticleProvider = ({ children }) => {
     { id: 2, title: 'Article 2', description: 'Description goes here 2' }
   ])
 
-  const saveArticle = ({ article }) => {
-    console.log(article);
-
+  const saveArticle = ({ title, description }) => {
     const newArticle = {
       id: Math.random(),
-      title: article.title,
-      description: article.description
+      title: title,
+      description: description
     }
     setArticles([...articles, newArticle]);
   }
