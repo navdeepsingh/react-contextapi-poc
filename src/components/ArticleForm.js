@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import { ArticlesContext } from "../context"
 
 const ArticleForm = () => {
@@ -6,10 +6,10 @@ const ArticleForm = () => {
 
   const title = React.createRef();
   const description = React.createRef();
-  const article = { title, description }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
+    const article = { 'title': title.current.value, 'description': description.current.value }
     saveArticle(article)
   }
 
@@ -17,15 +17,15 @@ const ArticleForm = () => {
     <section id="articles-list">
       <form>
         <div>
-          <label for="title">Title: </label>
+          <label htmlFor="title">Title: </label>
           <input ref={title} type="text" name="title" id="title" />
         </div>
         <div>
-          <label for="description">Description: </label>
+          <label htmlFor="description">Description: </label>
           <textarea ref={description} name="description" id="description"></textarea>
         </div>
         <div>
-          <button onClick={handleSubmit()}>ADD</button>
+          <button type="submit" onClick={handleSubmit}>ADD</button>
         </div>
       </form>
     </section>
