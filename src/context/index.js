@@ -1,24 +1,16 @@
 // Create the Context
-import React, { createContext, useState } from "react"
+import React, { createContext, useReducer } from "react"
+import reducer from "../reducer"
 export const ArticlesContext = createContext();
 
 const ArticleProvider = ({ children }) => {
-  const [articles, setArticles] = useState([
+  const [articles, dispatch] = useReducer(reducer, [
     { id: 1, title: 'Article 1', description: 'Description goes here 1' },
     { id: 2, title: 'Article 2', description: 'Description goes here 2' }
   ])
 
-  const saveArticle = ({ title, description }) => {
-    const newArticle = {
-      id: Math.random(),
-      title: title,
-      description: description
-    }
-    setArticles([...articles, newArticle]);
-  }
-
   return (
-    <ArticlesContext.Provider value={{ articles, saveArticle }}>
+    <ArticlesContext.Provider value={{ articles, dispatch }}>
       {children}
     </ArticlesContext.Provider>
   )
